@@ -27,9 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+
+
   @override
   void dispose() {
     _textEditingController.dispose();
+
     super.dispose();
   }
 
@@ -89,33 +92,34 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 18,
-              ),
+              // const SizedBox(
+              //   height: 18,
+              // ),
               TextField(
                 controller: _textEditingController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: "Search",
-                    filled: true,
-                    fillColor: Theme.of(context).cardColor,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).cardColor,
-                      ),
+                  hintText: "Search",
+                  filled: true,
+                  fillColor: Theme.of(context).cardColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).cardColor,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      width: 1,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
-                    suffixIcon: const Icon(
-                      IconlyLight.search,
-                      color: Colors.pinkAccent,
-                    )),
+                  ),
+                  suffixIcon: const Icon(
+                    IconlyLight.search,
+                    color: Colors.pinkAccent,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 18,
@@ -153,14 +157,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const Spacer(),
                             AppBarIcons(
-                                function: () {
-                                  Navigator.push(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.fade,
-                                          child: const FeedsScreen()));
-                                },
-                                icon: IconlyBold.arrowRight2),
+                              function: () {
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: const FeedsScreen(),
+                                  ),
+                                );
+                              },
+                              icon: IconlyBold.arrowRight2,
+                            ),
                           ],
                         ),
                       ),
@@ -182,13 +189,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         future: ApiHandler.getAllProduct(),
                       ),
-                      // isLoading
-                      //     ? const Center(child: CircularProgressIndicator())
-                      //     : productsList.isEmpty
-                      //         ? const Center(
-                      //             child: Text("No Products"),
-                      //           )
-                      //         : FeedsGridWidget(productsList: productsList),
                     ],
                   ),
                 ),

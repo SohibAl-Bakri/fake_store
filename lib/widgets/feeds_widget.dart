@@ -8,7 +8,7 @@ import '../model/products_model.dart';
 import '../screens/product_details.dart';
 
 class FeedsWidget extends StatefulWidget {
-  const FeedsWidget({
+ const FeedsWidget({
     Key? key,
   }) : super(key: key);
 
@@ -19,8 +19,7 @@ class FeedsWidget extends StatefulWidget {
 class _FeedsWidgetState extends State<FeedsWidget> {
   @override
   Widget build(BuildContext context) {
-    final ProductsModel productsModelProvider =
-        Provider.of<ProductsModel>(context);
+    final productsModelProvider = Provider.of<ProductsModel>(context);
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(2.0),
@@ -34,7 +33,10 @@ class _FeedsWidgetState extends State<FeedsWidget> {
               context,
               PageTransition(
                 type: PageTransitionType.fade,
-                child: const ProductDetails(),
+                child: ProductDetails(
+                  id: productsModelProvider.id!.toString(),
+                  title: productsModelProvider.title.toString(),
+                ),
               ),
             );
           },
