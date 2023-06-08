@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:fake_store/model/categories_model.dart';
 import 'package:fake_store/model/users_model.dart';
 import 'package:http/http.dart' as http;
-
+import '../model/categories_model.dart';
 import '../model/products_model.dart';
 
 class ApiHandler {

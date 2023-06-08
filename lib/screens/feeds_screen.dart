@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
+import '../consts/global_colors.dart';
+import '../model/categories_model.dart';
 import '../model/products_model.dart';
 import '../services/api_handler.dart';
 import '../widgets/feeds_widget.dart';
@@ -14,10 +16,18 @@ class FeedsScreen extends StatefulWidget {
 
 class _FeedsScreenState extends State<FeedsScreen> {
   List<ProductsModel> productsList = [];
+  List<CategoriesModel> categoriesList = [];
+
+  Future<void> getCategories() async {
+    categoriesList =
+        (await ApiHandler.getAllCategories()).cast<CategoriesModel>();
+    setState(() {});
+  }
 
   @override
   void didChangeDependencies() {
     getProducts();
+    getCategories();
     super.didChangeDependencies();
   }
 
@@ -50,10 +60,28 @@ class _FeedsScreenState extends State<FeedsScreen> {
         // elevation: 4,
         title: const Text('All Products'),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.filter_alt_outlined),
+          DropdownButton(
+            underline: const SizedBox(),
+            hint: const Text('Filter'),
+            disabledHint: const Text('Filter'),
+            icon: Icon(
+              Icons.filter_alt_outlined,
+              color: GlobalColors.iconsColor,
+            ),
+            items: categoriesList
+                .map(
+                  (e) => DropdownMenuItem(
+                    value: e.id,
+                    child: Text(e.image.toString()),
+                  ),
+                )
+                .toList(),
+            onChanged: (value) {},
           ),
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.filter_alt_outlined),
+          // ),
         ],
       ),
       body: isLoading
@@ -63,8 +91,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   child: Text('No Products'),
                 )
               : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
                     children: [
                       TextField(
                         controller: _textEditingController,
@@ -118,7 +146,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                       ),
                     ],
                   ),
-              ),
+                ),
     );
   }
 }

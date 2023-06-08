@@ -91,7 +91,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       TextSpan(
                                         text: productsModel!.price.toString(),
                                         style: TextStyle(
-                                          color: lightTextColor,
+                                          color: GlobalColors.textColor,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),

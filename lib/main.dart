@@ -26,21 +26,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter 3.0.4 ',
       theme: ThemeData(
-        scaffoldBackgroundColor: lightScaffoldColor,
-        primaryColor: lightCardColor,
+        scaffoldBackgroundColor:GlobalColors.scaffoldColor,
+        primaryColor: GlobalColors.cardColor,
         // backgroundColor: lightBackgroundColor,
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(
-            color: lightIconsColor,
+            color: GlobalColors.iconsColor,
           ),
-          backgroundColor: lightScaffoldColor,
+          backgroundColor:GlobalColors.scaffoldColor,
           centerTitle: true,
           titleTextStyle: TextStyle(
-              color: lightTextColor, fontSize: 22, fontWeight: FontWeight.bold),
+              color: GlobalColors.textColor, fontSize: 22, fontWeight: FontWeight.bold),
           elevation: 0,
         ),
         iconTheme: IconThemeData(
-          color: lightIconsColor,
+          color:GlobalColors.iconsColor,
         ),
 
         textSelectionTheme: const TextSelectionThemeData(
@@ -53,10 +53,10 @@ class MyApp extends StatelessWidget {
         //       bodyColor: Colors.black,
         //       displayColor: Colors.black,
         //     ),
-        cardColor: lightCardColor,
+        cardColor:GlobalColors.cardColor,
         brightness: Brightness.light,
         colorScheme: ThemeData().colorScheme.copyWith(
-              secondary: lightIconsColor,
+              secondary: GlobalColors.iconsColor,
               brightness: Brightness.light,
             ),
       ),

@@ -8,7 +8,7 @@ import '../model/products_model.dart';
 import '../screens/product_details.dart';
 
 class FeedsWidget extends StatefulWidget {
- const FeedsWidget({
+  const FeedsWidget({
     Key? key,
   }) : super(key: key);
 
@@ -59,8 +59,9 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                             TextSpan(
                               text: productsModelProvider.price.toString(),
                               style: TextStyle(
-                                  color: lightTextColor,
-                                  fontWeight: FontWeight.w600),
+                                color: GlobalColors.textColor,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ],
                         ),
